@@ -1,0 +1,12 @@
+{
+    "snowflake":
+    {
+        "username":"username",
+        "password":"password",
+        "account":"account"
+    }
+    , "dune":
+    {
+        "apikey":"apikey"
+    }
+}
