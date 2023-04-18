@@ -27,8 +27,6 @@ def getConfigs():
         configs = json.load(json_data_file)
     return configs
 
-BASE_URL = "https://api.dune.com/api/v1/"
-
 def make_api_url(module, action, ID):
     """
     We shall use this function to generate a URL to call the API.
@@ -168,6 +166,7 @@ if __name__ == '__main__':
     user = getSnowflakeUsername()
     pw = getSnowflakePassword()
 
+    BASE_URL = "https://api.dune.com/api/v1/"
 
     API_KEY = getAPIKey()
     HEADER = {"x-dune-api-key" : API_KEY}
