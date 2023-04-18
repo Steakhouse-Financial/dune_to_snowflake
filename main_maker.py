@@ -171,7 +171,7 @@ if __name__ == '__main__':
     API_KEY = getAPIKey()
     HEADER = {"x-dune-api-key" : API_KEY}
 
-    if user == 'username' or pw == 'password' or apikey == 'apikey':
+    if user == 'username' or pw == 'password' or API_KEY == 'apikey':
         raise Exception("Dune username / password or apikey entry is invalid. Please update config.json")
 
     begin_dt = scrubLatestDate('maker_tx_level_accounting')
