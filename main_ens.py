@@ -104,6 +104,11 @@ def get_dune_df(query_id, parameters):
         state = get_query_status(execution_id).json()['state']
         duration = duration + 60
         print(str(duration/60)+' minutes elapsed')
+        if duration/60 > 120:
+            print('canceling execution')
+            response = cancel_query_execution(execution_id)
+            print(response)
+            break
 
     response = get_query_results(execution_id)
     df = pd.DataFrame(response.json()['result']['rows'])
@@ -177,7 +182,7 @@ if __name__ == '__main__':
     begin_dt = scrubLatestDate('ens_accounting')
     parameters = {"begin_dt" : begin_dt, "end_dt" : "2099-12-31"}
 
-    df = get_dune_df("2244104", parameters)
+    df = get_dune_df("2984938", parameters)
 
     df['ts']=pd.to_datetime(df['ts']) #handling of ts
     uploadToSnowflakeAppend(df = df, tablename = 'ens_accounting')
