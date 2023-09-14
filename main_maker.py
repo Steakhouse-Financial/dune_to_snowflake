@@ -104,6 +104,11 @@ def get_dune_df(query_id, parameters):
         state = get_query_status(execution_id).json()['state']
         duration = duration + 60
         print(str(duration/60)+' minutes elapsed')
+        if duration/60 > 120:
+            print('canceling execution')
+            response = cancel_query_execution(execution_id)
+            print(response)
+            break
 
     response = get_query_results(execution_id)
     df = pd.DataFrame(response.json()['result']['rows'])
